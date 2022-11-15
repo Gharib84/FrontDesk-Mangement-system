@@ -9,44 +9,49 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200 text-center">
-                    
+
                     {{-- cards --}}
                     <div
                         class="cards mt-7 w-full h-2/4  sm:flex sm:flex-col md:flex md:flex-col lg:flex lg:flex-row  xl:flex xl:flex-row 2xl:flex 2xl:flex-row justify-between
                             sm:items-center md:items-center 
                         ">
                         <div class="card-one card w-full h-48 flex justify-center items-center shadow-md ml-5 rounded-r">
-                            <form action="" method="POST">
+
+                            <div class="sub-child grid gap-3">
                                 <h1 class="text-3xl">
                                     Make A Book
                                 </h1>
-                                <button class="bg-indigo-800 px-5 py-2 rounded-r mt-2" style="color: aliceblue;font-weight:bold;">
+                                <a href="{{ route('book.create') }}" class="bg-indigo-800 px-5 py-2 rounded-r mt-2"
+                                    style="color: aliceblue;font-weight:bold;">
                                     Create
-                                </button>
-                            </form>
+                                </a>
+                            </div>
                         </div>
 
-                        <div class="card-two card w-full h-48 flex justify-center items-center shadow-md ml-5 rounded-r">
-                            <form action="" method="POST">
+                        <div
+                            class="card-two card w-full h-48 flex justify-center items-center shadow-md ml-5 rounded-r">
+                            <div class="sub-child grid gap-3">
                                 <h1 class="text-3xl">
-                                   Check Arrivals
+                                    Arrivals List
                                 </h1>
-                                <button class="bg-indigo-800 px-5 py-2 rounded-r mt-2" style="color: aliceblue; font-weight:bold;">
+                                <a href="{{ route('book.create') }}" class="bg-indigo-800 px-5 py-2 rounded-r mt-2"
+                                    style="color: aliceblue;font-weight:bold;">
                                     Search
-                                </button>
-                            </form>
+                                </a>
+                            </div>
                         </div>
 
-                        <div class="card-three card w-full h-48 flex justify-center items-center shadow-md ml-5 rounded-r">
-                            <form action="" method="POST">
+                        <div
+                            class="card-three card w-full h-48 flex justify-center items-center shadow-md ml-5 rounded-r">
+                            <div class="sub-child grid gap-3">
                                 <h1 class="text-3xl">
-                                    Departure
+                                    Departure List
                                 </h1>
-                                <button class="bg-indigo-800 px-5 py-2 rounded-r mt-2" style="color: aliceblue;font-weight:bold;">
-                                    Check
-                                </button>
-                            </form>
-                        </div>
+                                <a href="{{ route('book.create') }}" class="bg-indigo-800 px-5 py-2 rounded-r mt-2"
+                                    style="color: aliceblue;font-weight:bold;">
+                                    Check Now
+                                </a>
+                            </div>
 
                         {{-- end cards --}}
                     </div>
