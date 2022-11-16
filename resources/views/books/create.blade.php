@@ -9,9 +9,6 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200 text-center">
-                    <h1>
-                        hello babe
-                    </h1>
 
                     <!-- component -->
 
@@ -20,13 +17,30 @@
                         <!-- Author: FormBold Team -->
                         <!-- Learn More: https://formbold.com -->
                         <div class="mx-auto w-full">
-                            <form action="https://formbold.com/s/FORM_ID" method="POST">
+                            <form  action=" {{route('books.store')}}" method="post">
+                                @csrf
+                                <h1 class="mb-5 font-bold text-lg text-left text-blue-700">
+                                    <!-- /resources/views/post/create.blade.php -->
+
+                                    Make A Book
+                                </h1>
+
+                                @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                                 <div class="mb-5">
                                     <label for="room"
                                         class=" text-left mb-3 block text-base font-medium text-[#07074D]">
-                                        Room Number 
+                                        Room Number
                                     </label>
-                                    <input type="number" name="room_number" id="name" min="1" max="250"
+                                    <input type="number" name="room_number" id="name" min="1"
+                                        max="250"
                                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                                 </div>
                                 <div class="mb-5">
@@ -40,7 +54,7 @@
                                 <div class="mb-5">
                                     <label for="room_type"
                                         class=" text-left mb-3 block text-base font-medium text-[#07074D]">
-                                        Room Type 
+                                        Room Type
                                     </label>
                                     <input type="text" name="room_type" id="subject"
                                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
@@ -61,9 +75,9 @@
                                     <input type="date" name="daparture_date" id="subject"
                                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                                 </div>
-                                
+
                                 <div>
-                                    <button
+                                    <button type="submit"
                                         class="hover:shadow-form rounded-md bg-[#5b21b6] py-3 px-8 text-base font-semibold text-white outline-none block">
                                         Book Now
                                     </button>

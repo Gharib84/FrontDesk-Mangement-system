@@ -26,7 +26,7 @@ class BookController extends Controller
     public function create()
     {
         //
-        return view('booking.create');
+        return view('books.create');
         
     }
 
@@ -39,6 +39,25 @@ class BookController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate(
+            [
+                'room_number' => 'required',
+                'guest_name' => 'required|string|min:10|max:50',
+                'room_type' => 'required',
+                'arrival_date' => 'required',
+                'daparture_date' => 'required'
+            ]
+            );
+
+                book::create(
+                    [
+                        $request->all()
+                    ]
+                    );
+
+                flash('Reservation Has Created')->success();
+                return redirect()->route('books.index');
+         
     }
 
     /**

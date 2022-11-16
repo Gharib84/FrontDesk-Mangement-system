@@ -21,7 +21,7 @@
                                 <h1 class="text-3xl">
                                     Make A Book
                                 </h1>
-                                <a href="{{ route('book.create') }}" class="bg-indigo-800 px-5 py-2 rounded-r mt-2"
+                                <a href="{{ route('books.create') }}" class="bg-indigo-800 px-5 py-2 rounded-r mt-2"
                                     style="color: aliceblue;font-weight:bold;">
                                     Create
                                 </a>
@@ -34,7 +34,7 @@
                                 <h1 class="text-3xl">
                                     Arrivals List
                                 </h1>
-                                <a href="{{ route('book.create') }}" class="bg-indigo-800 px-5 py-2 rounded-r mt-2"
+                                <a href="{{ route('books.create') }}" class="bg-indigo-800 px-5 py-2 rounded-r mt-2"
                                     style="color: aliceblue;font-weight:bold;">
                                     Search
                                 </a>
@@ -47,7 +47,7 @@
                                 <h1 class="text-3xl">
                                     Departure List
                                 </h1>
-                                <a href="{{ route('book.create') }}" class="bg-indigo-800 px-5 py-2 rounded-r mt-2"
+                                <a href="{{ route('books.create') }}" class="bg-indigo-800 px-5 py-2 rounded-r mt-2"
                                     style="color: aliceblue;font-weight:bold;">
                                     Check Now
                                 </a>

@@ -25,7 +25,7 @@ Route::get('/dashboard', function () {
 
 
 
-Route::resource('book', BookController::class);
+Route::resource('books', BookController::class);
 
 
 require __DIR__.'/auth.php';
