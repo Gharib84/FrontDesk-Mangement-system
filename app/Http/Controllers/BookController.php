@@ -15,6 +15,7 @@ class BookController extends Controller
     public function index()
     {
         //
+        return view('books.index');
 
     }
 
@@ -49,14 +50,19 @@ class BookController extends Controller
             ]
             );
 
-                book::create(
-                    [
-                        $request->all()
-                    ]
-                    );
+            //insert to database
+        
+        $book = new book();
+        $book->room_number = $request->get('room_number');
+        $book->Guest_Name = $request->get('guest_name');
+        $book->Room_Type = $request->get('room_type');
+        $book->Arrival_Date = $request->get('arrival_date');
+        $book->Departure_Date = $request->get('daparture_date');
+        $book->save();
 
-                flash('Reservation Has Created')->success();
-                return redirect()->route('books.index');
+        
+         flash('Reservation Has Created')->success();
+         return redirect()->route('books.index');
          
     }
 
