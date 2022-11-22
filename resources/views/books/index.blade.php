@@ -71,7 +71,7 @@
                                                         <form action="" method="GET">
                                                             @csrf
                                                             <button type="submit" class="inline-block px-6 py-2 border-2 border-green-500 text-green-500 font-bold text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
-                                                                Edit</button>
+                                                                Book</button>
                                                         </form>
                                                     </td>
                                                     <td>
@@ -88,6 +88,7 @@
                                         </tbody>
                                          
                                     </table>
+                                    {{$books->links()}}
                                 </div>
                             </div>
                         </div>
