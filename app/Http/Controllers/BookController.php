@@ -78,7 +78,9 @@ class BookController extends Controller
      */
     public function show(book $book)
     {
-        //
+        //show book
+
+        return view('books.show')->with('book', $book);
     }
 
     /**
