@@ -16,9 +16,11 @@ class roomscontroller extends Controller
         //
 
         $rooms = checkIn::all();
+        flash('Reservation Has Created')->success();
 
         return view('rooms.index', [
-            "rooms"=> $rooms
+            "rooms"=> $rooms,
+            
         ]);
 
 

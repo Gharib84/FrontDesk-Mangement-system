@@ -17,6 +17,9 @@
                                     <h1 class="font-bold text-xl text-left mb-5 ml-1">
                                         Rooms List In Resort
                                     </h1>
+                                    <span class="mt-3 bg-green-500 text-white text-center font-bold">
+                                        @include('flash::message')
+                                    </span>
                                     <table class="min-w-full text-center">
                                         <thead class="border-b bg-[#5b21b6]">
                                             <tr>
