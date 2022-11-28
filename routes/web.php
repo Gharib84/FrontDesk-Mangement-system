@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController; 
+use App\Http\Controllers\roomscontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,7 @@ Route::get('/dashboard', function () {
 
 
 Route::resource('books', BookController::class);
+Route::resource('rooms', roomscontroller::class);
 
 
 require __DIR__.'/auth.php';

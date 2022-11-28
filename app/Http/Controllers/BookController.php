@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\checkIn;
 use App\Models\book;
 use Illuminate\Http\Request;
 
@@ -101,9 +101,31 @@ class BookController extends Controller
      * @param  \App\Models\book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, book $book)
+    public function update(Request $request, book $book, checkIn $checkIn)
     {
         //
+        $request->validate(
+            [
+                'room_number' => 'required',
+                'guest_name' => 'required|string|min:10|max:50',
+                'room_type' => 'required',
+                'arrival_date' => 'required',
+                'daparture_date' => 'required',
+                'pax' => 'required'
+            ]
+            );
+
+            $checkIn = new checkIn();
+            $checkIn->room_number = $request->get('room_number');
+            $checkIn->Guest_Name = $request->get('guest_name');
+            $checkIn->Room_Type = $request->get('room_type');
+            $checkIn->Arrival_Date = $request->get('arrival_date');
+            $checkIn->Departure_Date = $request->get('daparture_date');
+            $checkIn->pax = $request->get('pax');
+            $checkIn->save();
+
+            return redirect()->route('rooms.index');
+
     }
 
     /**

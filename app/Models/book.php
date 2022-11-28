@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,6 +12,6 @@ class book extends Model
 
 
     public function checkIn(){
-        return $this->hasOne(app\Models\checkIn::class);
+        return $this->hasOne(App\Models\checkIn::class);
     }
 }
