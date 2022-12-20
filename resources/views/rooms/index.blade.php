@@ -77,9 +77,13 @@
                                                         {{ $room->pax }}
                                                     </td>
                                                     <td>
-                                                       <a href="" class="px-6 py-2 border-2 font-bold border-blue-400 text-sm  leading-tight rounded-full focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
-                                                        Create
-                                                       </a>
+                                                        <form action="{{route('rooms.show', $room->checkIn_id)}}" method="GET">
+                                                            @csrf
+                                                            <button type="submit"
+                                                                class="px-6 py-2 border-2 font-bold border-blue-400 text-sm text-blue-400 leading-tight rounded-full focus:outline-none focus:ring-0 transition duration-150 ease-in-out
+                                                                ">
+                                                                Invoice</button>
+                                                        </form>
                                                     </td>
                                                     <td>
                                                         <form action="" method="POST">
@@ -92,17 +96,16 @@
                                                 </tr class="bg-white border-b">
                                             @endforeach
 
-
                                         </tbody>
                                     </table>
-                                    {{$rooms->links()}}
+                                    {{ $rooms->links() }}
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     {{-- end form --}}
-                    
+
                 </div>
             </div>
         </div>

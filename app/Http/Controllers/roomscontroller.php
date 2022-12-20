@@ -79,9 +79,13 @@ class roomscontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(checkIn $room)
     {
-        //
+
+        // code here
+
+        return view('rooms.show')->with('room', $room);
+
     }
 
     /**
