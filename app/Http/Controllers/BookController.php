@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\checkIn;
 use App\Models\book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class BookController extends Controller
 {
@@ -46,7 +48,7 @@ class BookController extends Controller
         //
         $request->validate(
             [
-                'room_number' => 'required',
+                'room_number' => 'required|unique:books,room_number',
                 'guest_name' => 'required|string|min:10|max:50',
                 'room_type' => 'required',
                 'arrival_date' => 'required',
@@ -124,6 +126,8 @@ class BookController extends Controller
             $checkIn->pax = $request->get('pax');
             $checkIn->save();
 
+            //delete row in room list 
+            DB::table('books')->where('room_number', '=', $request->get('room_number'))->delete();
             return redirect()->route('rooms.index');
 
     }

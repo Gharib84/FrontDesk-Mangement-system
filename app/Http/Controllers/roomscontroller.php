@@ -15,7 +15,7 @@ class roomscontroller extends Controller
     {
         //
 
-        $rooms = checkIn::all();
+        $rooms = checkIn::paginate(3);
         flash('Reservation Has Created')->success();
 
         return view('rooms.index', [
@@ -50,7 +50,7 @@ class roomscontroller extends Controller
         //
         $request->validate(
             [
-                'room_number' => 'required',
+                'room_number' => 'required|unique:books,room_number',
                 'guest_name' => 'required|string|min:10|max:50',
                 'room_type' => 'required',
                 'arrival_date' => 'required',

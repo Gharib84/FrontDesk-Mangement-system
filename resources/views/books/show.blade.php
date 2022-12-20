@@ -10,12 +10,10 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200 text-center">
 
-                    <!-- component -->
 
                     <!-- component -->
                     <div class="flex items-center justify-center p-12">
-                        <!-- Author: FormBold Team -->
-                        <!-- Learn More: https://formbold.com -->
+                       
                         <div class="mx-auto w-full">
                             <form action="{{ route('books.update', $book->book_id) }}" method="post">
                                 @csrf

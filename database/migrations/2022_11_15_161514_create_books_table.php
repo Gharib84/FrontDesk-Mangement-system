@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->increments('book_id');
-            $table->integer('room_number');
+            $table->integer('room_number')->unique();
             $table->string('Guest_Name', 100);
             $table->string('Room_Type', 100);
             $table->date('Arrival_Date');
