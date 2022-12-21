@@ -13,7 +13,7 @@
 
                     <!-- component -->
                     <div class="flex items-center justify-center p-12">
-                       
+
                         <div class="mx-auto w-full">
                             <form action="" method="post">
                                 @csrf
@@ -41,7 +41,7 @@
                                     <input type="number" name="room_number" id="name" min="1"
                                         max="250"
                                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                        value="" />
+                                        value="{{$room->room_number}}" />
                                 </div>
                                 <div class="mb-5">
                                     <label for="guest_name"
@@ -50,6 +50,17 @@
                                     </label>
                                     <input type="text" name="guest_name" id="email"
                                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                        value="{{$room->Guest_Name}}" />
+                                </div>
+
+                                <div class="mb-5">
+                                    <label for="room"
+                                        class=" text-left mb-3 block text-base font-medium text-[#07074D]">
+                                        Price
+                                    </label>
+                                    <input type="number" name="room_number" id="name" min="1"
+                                        
+                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                         value="" />
                                 </div>
                                 <div class="mb-5">
@@ -57,13 +68,14 @@
                                         class=" text-left mb-3 block text-base font-medium text-[#07074D]">
                                         Invoice Details
                                     </label>
-                                    <textarea name="" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                    id="" cols="30" rows="10"></textarea>
+                                    <textarea name=""
+                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                        id="" cols="30" rows="10"></textarea>
                                 </div>
-                             
-                              
 
-                            
+
+
+
 
                                 <div>
                                     <button type="submit"

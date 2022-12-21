@@ -34,4 +34,9 @@ return new class extends Migration
     {
         Schema::dropIfExists('check_ins');
     }
+
+
+    public function createInvoice():void {
+        
+    }
 };
