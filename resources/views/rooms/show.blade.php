@@ -15,9 +15,8 @@
                     <div class="flex items-center justify-center p-12">
 
                         <div class="mx-auto w-full">
-                            <form action="" method="post">
+                            <form action="{{route('rooms.store_invoice')}}" method="post">
                                 @csrf
-                                @method('PUT')
                                 <h1 class="mb-5 font-bold text-lg text-left text-blue-700">
                                     <!-- /resources/views/post/create.blade.php -->
 
@@ -54,23 +53,23 @@
                                 </div>
 
                                 <div class="mb-5">
-                                    <label for="room"
+                                    <label for="price"
                                         class=" text-left mb-3 block text-base font-medium text-[#07074D]">
                                         Price
                                     </label>
-                                    <input type="number" name="room_number" id="name" min="1"
+                                    <input type="number" name="price" id="price" min="1"
                                         
                                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                         value="" />
                                 </div>
                                 <div class="mb-5">
-                                    <label for="room_type"
+                                    <label for="details"
                                         class=" text-left mb-3 block text-base font-medium text-[#07074D]">
                                         Invoice Details
                                     </label>
                                     <textarea name=""
                                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                        id="" cols="30" rows="10"></textarea>
+                                        id="details" name="details" cols="30" rows="10"></textarea>
                                 </div>
 
 

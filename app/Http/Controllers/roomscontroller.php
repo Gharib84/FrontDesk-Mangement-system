@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\checkIn;
+use App\Models\invoice;
 use Illuminate\Http\Request;
 
 class roomscontroller extends Controller
@@ -120,5 +121,9 @@ class roomscontroller extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function store_invoice(Request $request){
+
     }
 }

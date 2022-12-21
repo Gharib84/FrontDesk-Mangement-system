@@ -9,6 +9,8 @@ class invoice extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['price', 'details'];
+
 
     public function room(){
         $this->belongsTo(checkIn::class);

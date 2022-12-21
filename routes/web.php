@@ -27,7 +27,10 @@ Route::get('/dashboard', function () {
 
 
 Route::resource('books', BookController::class);
-Route::resource('rooms', roomscontroller::class);
+Route::resource('rooms', roomscontroller::class)->only([
+    'index', 'create', 'store', 'show', 'destroy'
+]);
 
+Route::post('rooms/invoice', [roomscontroller::class, 'store_invoice'])->name('rooms.store_invoice');
 
 require __DIR__.'/auth.php';
