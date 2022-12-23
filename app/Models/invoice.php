@@ -10,9 +10,11 @@ class invoice extends Model
     use HasFactory;
 
     protected $fillable = ['price', 'details'];
+    protected $primaryKey = 'id';
+
 
 
     public function room(){
-        $this->belongsTo(checkIn::class);
+       return $this->belongsTo(checkIn::class,'room_id');
     }
 }

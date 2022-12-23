@@ -123,7 +123,28 @@ class roomscontroller extends Controller
         //
     }
 
-    public function store_invoice(Request $request){
+    public function store_invoice(Request $request, checkin $room ){
+       
+        if ($room == null) {
+            return response()->json([
+                'error' => 'Room not found'
+            ], 404);
+        }
+    
+        $request->validate([
+            'price' => 'required',
+            'details' => 'required|string'
+        ]);
+    
+        $invoice = new invoice;
+        $invoice->price = $request->get('price');
+        $invoice->details = $request->get('details');
+        //invoice->save();
+        $room->invoices()->save($invoice);
+    
+        return response()->json([
+            'message' => 'Invoice created successfully'
+        ], 201);
 
     }
 }

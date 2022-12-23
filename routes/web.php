@@ -26,11 +26,11 @@ Route::get('/dashboard', function () {
 
 
 
-Route::resource('books', BookController::class);
+Route::resource('books', BookController::class)->middleware(['auth', 'verified']);
 Route::resource('rooms', roomscontroller::class)->only([
     'index', 'create', 'store', 'show', 'destroy'
-]);
+])->middleware(['auth', 'verified']);
 
-Route::post('rooms/invoice', [roomscontroller::class, 'store_invoice'])->name('rooms.store_invoice');
+Route::post('rooms/invoice', [roomscontroller::class, 'store_invoice'])->name('rooms.store_invoice')->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';

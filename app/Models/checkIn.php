@@ -14,7 +14,7 @@ class checkIn extends Model
 
 
     public function invoices(){
-        $this->hasMany(invoice::class);
+       return $this->hasMany(invoice::class);
     }
 
 
