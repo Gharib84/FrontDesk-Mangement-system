@@ -15,6 +15,6 @@ class invoice extends Model
 
 
     public function room(){
-       return $this->belongsTo(checkIn::class,'room_id');
+       return $this->belongsTo(checkIn::class);
     }
 }

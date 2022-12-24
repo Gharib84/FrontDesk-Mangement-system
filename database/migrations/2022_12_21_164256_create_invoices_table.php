@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id('id');
+            $table->unsignedBigInteger('invoice_fk')->unsigned()->nullable();
             $table->float('price');
             $table->text('details');
-            $table->integer('room_id')->unsigned()->nullable();
+            $table->foreign('invoice_fk')->references('checkIn_id')->on('check_ins');
             $table->timestamps();
-            $table->foreign('room_id')->references('checkIn_id')->on('check_ins')->onDelete('cascade');
         });
     }
 
@@ -31,6 +31,7 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('invoices');
+        $table->dropForeign('invoice_fk');
         
     
         
