@@ -31,6 +31,6 @@ Route::resource('rooms', roomscontroller::class)->only([
     'index', 'create', 'store', 'show', 'destroy'
 ])->middleware(['auth', 'verified']);
 
-Route::post('rooms/invoice', [roomscontroller::class, 'store_invoice'])->name('rooms.store_invoice')->middleware(['auth', 'verified']);
+Route::put('rooms/{checkIn}', [roomscontroller::class, 'store_invoice'])->name('rooms.store_invoice')->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';

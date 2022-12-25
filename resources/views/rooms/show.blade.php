@@ -15,8 +15,9 @@
                     <div class="flex items-center justify-center p-12">
 
                         <div class="mx-auto w-full">
-                            <form action="{{route('rooms.store_invoice')}}" method="post">
+                            <form action="{{route('rooms.store_invoice',['checkIn'=> $room])}}" method="post">
                                 @csrf
+                                @method('put')
                                 <h1 class="mb-5 font-bold text-lg text-left text-blue-700">
                                     <!-- /resources/views/post/create.blade.php -->
 
@@ -42,12 +43,25 @@
                                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                         value="{{$room->room_number}}" />
                                 </div>
+
+                                <div class="mb-5">
+                                    <label for="room"
+                                        class=" text-left mb-3 block text-base font-medium text-[#07074D]">
+                                        ID
+                                    </label>
+                                    <input type="number" name="roomID" id="roomID" min="1"
+                                        max="250"
+                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                        value="{{$room->checkIn_id}}" />
+                                </div>
+
+
                                 <div class="mb-5">
                                     <label for="guest_name"
                                         class=" text-left mb-3 block text-base font-medium text-[#07074D]">
                                         Guest Name
                                     </label>
-                                    <input type="text" name="guest_name" id="email"
+                                    <input type="text" name="guest_name" id="guest_name"
                                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                         value="{{$room->Guest_Name}}" />
                                 </div>

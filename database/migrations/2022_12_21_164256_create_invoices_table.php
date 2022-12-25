@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id('id');
-            $table->unsignedBigInteger('invoice_fk')->unsigned()->nullable();
+            $table->unsignedBigInteger('invoice_fk');
+            $table->foreign('invoice_fk')->references('checkIn_id')->on('check_ins');
             $table->float('price');
             $table->text('details');
-            $table->foreign('invoice_fk')->references('checkIn_id')->on('check_ins');
             $table->timestamps();
         });
     }

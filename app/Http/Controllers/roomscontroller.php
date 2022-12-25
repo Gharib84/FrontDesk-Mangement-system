@@ -123,8 +123,8 @@ class roomscontroller extends Controller
         //
     }
 
-    public function store_invoice(Request $request, checkin $room ){
-       
+    public function store_invoice(Request $request, checkIn $room ){
+        $id = checkIn::find(1);
         if ($room == null) {
             return response()->json([
                 'error' => 'Room not found'
@@ -137,8 +137,10 @@ class roomscontroller extends Controller
         ]);
     
         $invoice = new invoice;
+        $invoice->invoice_fk = $id;
         $invoice->price = $request->get('price');
         $invoice->details = $request->get('details');
+        
         //invoice->save();
         $room->invoices()->save($invoice);
     
