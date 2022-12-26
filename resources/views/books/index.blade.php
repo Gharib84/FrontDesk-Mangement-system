@@ -14,9 +14,16 @@
                         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                             <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
                                 <div class="overflow-hidden">
+                                   <div class="main flex flex-row justify-between">
                                     <h1 class="font-bold text-xl text-left mb-5 ml-1">
                                         Rooms List In Resort
                                     </h1>
+                                    <a
+                                    class="background-transparent  text-blue-700 text-base mt-1 font-bold uppercase outline-none focus:outline-none  mb-0  ease-linear transition-all duration-150"
+                                    href="{{route('books.create')}}">
+                                    Add New Room
+                                </a>
+                                   </div>
                                     <table class="min-w-full text-center">
                                         <thead class="border-b bg-[#5b21b6]">
                                             <tr>
@@ -70,14 +77,17 @@
                                                     <td>
                                                         <form action="" method="GET">
                                                             @csrf
-                                                            <a  href="{{route('books.show', $book->book_id)}}" type="submit" class="inline-block px-6 py-2 border-2 border-green-500 text-green-500 font-bold text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
+                                                            <a href="{{ route('books.show', $book->book_id) }}"
+                                                                type="submit"
+                                                                class="inline-block px-6 py-2 border-2 border-green-500 text-green-500 font-bold text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
                                                                 Book</a>
                                                         </form>
                                                     </td>
                                                     <td>
                                                         <form action="" method="POST">
                                                             @csrf
-                                                            <button type="submit" class="inline-block px-6 py-2 border-2 border-red-600 text-red-600 font-bold text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
+                                                            <button type="submit"
+                                                                class="inline-block px-6 py-2 border-2 border-red-600 text-red-600 font-bold text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
                                                                 Check Out</button>
                                                         </form>
                                                     </td>
@@ -86,17 +96,21 @@
 
 
                                         </tbody>
-                                         
+                        
                                     </table>
-                                    {{$books->links()}}
+                                    {{ $books->links() }}
+                                   
+
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     {{-- end form --}}
+
+
                 </div>
             </div>
-        </div>
 
+        </div>
 </x-app-layout>
