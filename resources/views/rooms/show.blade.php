@@ -14,8 +14,15 @@
                     <!-- component -->
                     <div class="flex items-center justify-center p-12">
 
+                        @if (session()->has('success'))
+                            <div class="alert alert-success">
+                                {{ session()->get('success') }}
+                            </div>
+                        @endif
+
+
                         <div class="mx-auto w-full">
-                            <form action="{{route('rooms.store_invoice',['checkIn'=> $room])}}" method="post">
+                            <form action="{{ route('rooms.store_invoice', ['checkIn' => $room]) }}" method="post">
                                 @csrf
                                 @method('PUT')
                                 <h1 class="mb-5 font-bold text-lg text-left text-blue-700">
@@ -41,7 +48,7 @@
                                     <input type="number" name="room_number" id="name" min="1"
                                         max="250"
                                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                        value="{{$room->room_number}}" />
+                                        value="{{ $room->room_number }}" />
                                 </div>
 
 
@@ -52,7 +59,7 @@
                                     </label>
                                     <input type="text" name="guest_name" id="guest_name"
                                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                        value="{{$room->Guest_Name}}" />
+                                        value="{{ $room->Guest_Name }}" />
                                 </div>
 
                                 <div class="mb-5">
@@ -61,7 +68,6 @@
                                         Price
                                     </label>
                                     <input type="number" name="price" id="price" min="1"
-                                        
                                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                         value="" />
                                 </div>
@@ -72,7 +78,7 @@
                                     </label>
                                     <textarea name="details"
                                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                        id="details"  cols="30" rows="10"></textarea>
+                                        id="details" cols="30" rows="10"></textarea>
                                 </div>
 
 

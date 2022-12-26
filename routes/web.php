@@ -32,5 +32,5 @@ Route::resource('rooms', roomscontroller::class)->only([
 ])->middleware(['auth', 'verified']);
 
 Route::put('rooms/{checkIn}', [roomscontroller::class, 'store_invoice'])->name('rooms.store_invoice')->middleware(['auth', 'verified']);
-
+Route::get('invoices',[roomscontroller::class, 'invoices_index'])->name('invoices.table')->middleware(['auth', 'verified']);
 require __DIR__.'/auth.php';

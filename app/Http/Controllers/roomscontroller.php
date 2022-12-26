@@ -142,13 +142,22 @@ class roomscontroller extends Controller
                 $invoice->invoice_fk = $id;
                 $invoice->price = $request->get('price');
                 $invoice->details = $request->get('details');
-                $invoice->save();  
+                $invoice->save();
+                
+                return redirect()->to('invoices');
+               
 
          }
        
-        
-
 
   }
+
+ 
+    public function invoices_index(){
+        $rooms = checkIn::with('invoices')->get();
+        return view('invoices.table', [
+            'rooms'=> $rooms
+        ]);
+    }
 
 }
