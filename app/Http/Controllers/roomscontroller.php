@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\Route;
 use App\Models\checkIn;
 use App\Models\invoice;
 use Illuminate\Http\Request;
@@ -124,29 +125,30 @@ class roomscontroller extends Controller
     }
 
     public function store_invoice(Request $request, checkIn $room ){
-        $id = checkIn::find(1);
-        if ($room == null) {
-            return response()->json([
-                'error' => 'Room not found'
-            ], 404);
-        }
-    
-        $request->validate([
-            'price' => 'required',
-            'details' => 'required|string'
-        ]);
-    
-        $invoice = new invoice;
-        $invoice->invoice_fk = $id;
-        $invoice->price = $request->get('price');
-        $invoice->details = $request->get('details');
-        
-        //invoice->save();
-        $room->invoices()->save($invoice);
-    
-        return response()->json([
-            'message' => 'Invoice created successfully'
-        ], 201);
+        $id = $request->route('checkIn');
 
-    }
+         if ($id === null) {
+             return response()->json([
+                'error' => 'checkIn_id is required'
+            ], 400);
+         } else {
+                // Validate the request data
+                $request->validate([
+                    'price' => 'required',
+                    'details' => 'required|string'
+                ]);
+
+                $invoice = new invoice;
+                $invoice->invoice_fk = $id;
+                $invoice->price = $request->get('price');
+                $invoice->details = $request->get('details');
+                $invoice->save();  
+
+         }
+       
+        
+
+
+  }
+
 }
