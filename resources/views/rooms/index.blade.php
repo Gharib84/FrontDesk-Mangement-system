@@ -17,9 +17,16 @@
                                     <h1 class="font-bold text-xl text-left mb-5 ml-1">
                                         Check In List In Resort
                                     </h1>
-                                    <span class="mt-3 bg-green-500 text-white text-center font-bold">
-                                        @include('flash::message')
-                                    </span>
+                                    @if (session('success'))
+                                    <div role="alert" x-data="{ show: true }" x-show="show" id="alert-session" class="w-full bg-fuchsia-500 mb-2 py-2">
+                                        <span class="  mt-3  text-white text-center font-bold">
+                                            {{ session('success') }}
+                                        </span>
+                                    </div>
+                                    @php
+                                        session()->forget('success');
+                                    @endphp
+                                @endif
                                     <table class="min-w-full text-center">
                                         <thead class="border-b bg-[#5b21b6]">
                                             <tr>
@@ -88,6 +95,7 @@
                                                     <td>
                                                         <form action="" method="POST">
                                                             @csrf
+                                                            @method('DELETE')
                                                             <button type="submit"
                                                                 class="inline-block px-6 py-2 border-2 border-red-600 text-red-600 font-bold text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
                                                                 Check Out</button>

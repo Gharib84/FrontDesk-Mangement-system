@@ -14,13 +14,6 @@
                     <!-- component -->
                     <div class="flex items-center justify-center p-12">
 
-                        @if (session()->has('success'))
-                            <div class="alert alert-success">
-                                {{ session()->get('success') }}
-                            </div>
-                        @endif
-
-
                         <div class="mx-auto w-full">
                             <form action="{{ route('rooms.store_invoice', ['checkIn' => $room]) }}" method="post">
                                 @csrf

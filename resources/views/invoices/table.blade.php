@@ -17,9 +17,16 @@
                                     <h1 class="font-bold text-xl text-left mb-5 ml-1">
                                         Invoices List In Resort
                                     </h1>
-                                    <span class="mt-3 bg-green-500 text-white text-center font-bold">
-                                        @include('flash::message')
-                                    </span>
+                                    @if (session('success'))
+                                        <div role="alert"  x-data="{ show: true }" x-show="show" id="alert-session" class="w-full bg-fuchsia-500 mb-2 py-2">
+                                            <span class="  mt-3  text-white text-center font-bold">
+                                                {{ session('success') }}
+                                            </span>
+                                        </div>
+                                        @php
+                                            session()->forget('success');
+                                        @endphp
+                                    @endif
                                     <table class="min-w-full text-center">
                                         <thead class="border-b bg-[#5b21b6]">
                                             <tr>
@@ -59,7 +66,7 @@
                                                         <td
                                                             class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                             {{ $invoice->details }}
-                                                        </td>   
+                                                        </td>
                                                         <td>
                                                             <form action="{{ route('rooms.show', $room->checkIn_id) }}"
                                                                 method="GET">

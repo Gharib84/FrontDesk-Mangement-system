@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\Route;
 use App\Models\checkIn;
 use App\Models\invoice;
 use Illuminate\Http\Request;
@@ -17,7 +16,7 @@ class roomscontroller extends Controller
     {
         //
 
-        $rooms = checkIn::paginate(3);
+        $rooms = checkIn::paginate(10);
         flash('Reservation Has Created')->success();
 
         return view('rooms.index', [
@@ -36,7 +35,6 @@ class roomscontroller extends Controller
     public function create(Request $request)
     {
         //
-
         return view('rooms.index');
 
     }
@@ -70,9 +68,8 @@ class roomscontroller extends Controller
             $checkin->Departure_Date = $request->get('daparture_date');
             $checkin->Departure_Date = $request->get('pax');
             $checkin->save();
-
-        
-         
+            session()->flash('success', 'Book has been created successfully!');
+            return redirect()->route('rooms');
     }
 
     /**
@@ -85,7 +82,7 @@ class roomscontroller extends Controller
     {
 
         // code here
-
+        session()->flash('success', 'Book has been created successfully!');
         return view('rooms.show')->with('room', $room);
 
     }
@@ -119,9 +116,12 @@ class roomscontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(checkIn $room)
     {
-        //
+        //delete specific row
+        $room->delete();
+        session()->flash('success','Check Out has been Done successfully!');
+        return redirect()->to('rooms');
     }
 
     public function store_invoice(Request $request, checkIn $room ){
@@ -143,7 +143,7 @@ class roomscontroller extends Controller
                 $invoice->price = $request->get('price');
                 $invoice->details = $request->get('details');
                 $invoice->save();
-                
+                session()->flash('success', 'Invoice has been created successfully!');
                 return redirect()->to('invoices');
                
 
@@ -154,12 +154,15 @@ class roomscontroller extends Controller
 
  
     public function invoices_index(){
-        $rooms = checkIn::with('invoices')->paginate(3);
+        $rooms = checkIn::with('invoices')->paginate(5);
         return view('invoices.table', [
-            'rooms'=> $rooms
+            'rooms'=> $rooms,
+             
         ]);
     }
 
-    
+    public function show_invoice(invoice $invoice){
+
+    }  
 
 }

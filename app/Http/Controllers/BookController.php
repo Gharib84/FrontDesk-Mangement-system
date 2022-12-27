@@ -18,7 +18,7 @@ class BookController extends Controller
     {
         //
 
-        $books = book::paginate(3);
+        $books = book::paginate(10);
         return view('books.index', [
             "books" => $books
         ]);
@@ -65,9 +65,7 @@ class BookController extends Controller
         $book->Arrival_Date = $request->get('arrival_date');
         $book->Departure_Date = $request->get('daparture_date');
         $book->save();
-
-        
-         flash('Reservation Has Created')->success();
+        session()->flash('success', 'Reservation has been created successfully!');
          return redirect()->route('books.index');
          
     }
@@ -128,6 +126,7 @@ class BookController extends Controller
 
             //delete row in room list 
             DB::table('books')->where('room_number', '=', $request->get('room_number'))->delete();
+            session()->flash('success', 'Reservation has been created successfully!');
             return redirect()->route('rooms.index');
 
     }
@@ -140,6 +139,10 @@ class BookController extends Controller
      */
     public function destroy(book $book)
     {
-        //
+        //delete row 
+        $book->delete();
+        session()->flash('success', 'Room has been Deleted successfully!');
+        return redirect()->to('books');
+
     }
 }
