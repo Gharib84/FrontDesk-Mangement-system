@@ -154,10 +154,12 @@ class roomscontroller extends Controller
 
  
     public function invoices_index(){
-        $rooms = checkIn::with('invoices')->get();
+        $rooms = checkIn::with('invoices')->paginate(3);
         return view('invoices.table', [
             'rooms'=> $rooms
         ]);
     }
+
+    
 
 }
