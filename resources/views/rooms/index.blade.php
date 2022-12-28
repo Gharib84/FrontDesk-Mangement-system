@@ -93,7 +93,7 @@
                                                         </form>
                                                     </td>
                                                     <td>
-                                                        <form action="" method="POST">
+                                                        <form action="{{route('rooms.destroy', $room)}}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"

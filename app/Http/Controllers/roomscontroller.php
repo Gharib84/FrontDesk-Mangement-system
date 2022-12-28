@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\checkIn;
 use App\Models\invoice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class roomscontroller extends Controller
 {
@@ -119,10 +121,13 @@ class roomscontroller extends Controller
     public function destroy(checkIn $room)
     {
         //delete specific row
+        DB::table('invoices')->where('invoice_fk', $room->checkIn_id)->delete();
         $room->delete();
         session()->flash('success','Check Out has been Done successfully!');
         return redirect()->to('rooms');
     }
+
+
 
     public function store_invoice(Request $request, checkIn $room ){
         $id = $request->route('checkIn');
@@ -154,7 +159,7 @@ class roomscontroller extends Controller
 
  
     public function invoices_index(){
-        $rooms = checkIn::with('invoices')->paginate(5);
+        $rooms = checkIn::with('invoices')->paginate(10);
         return view('invoices.table', [
             'rooms'=> $rooms,
              
@@ -162,7 +167,11 @@ class roomscontroller extends Controller
     }
 
     public function show_invoice(invoice $invoice){
+        //code here 
+        $invoices = invoice::with('room')->where('invoice_fk', $invoice->invoice_fk)->get();
+        return view('invoices.show', compact('invoices'));
+       }
 
     }  
 
-}
+

@@ -68,7 +68,7 @@
                                                             {{ $invoice->details }}
                                                         </td>
                                                         <td>
-                                                            <form action="{{ route('rooms.show', $room->checkIn_id) }}"
+                                                            <form action="{{ route('invoices.show', $invoice) }}"
                                                                 method="GET">
                                                                 @csrf
                                                                 <button type="submit"
@@ -84,7 +84,7 @@
 
                                         </tbody>
                                     </table>
-                                    {{ $rooms->links() }}
+                                    {{ $rooms->links()}}
 
                                 </div>
                             </div>
