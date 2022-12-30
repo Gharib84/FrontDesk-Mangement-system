@@ -34,7 +34,7 @@
                                 <h1 class="text-3xl">
                                     Arrivals List
                                 </h1>
-                                <a href="{{ route('books.create') }}" class="bg-indigo-800 px-5 py-2 rounded-r mt-2"
+                                <a href="{{ route('rooms.arrivals') }}" class="bg-indigo-800 px-5 py-2 rounded-r mt-2"
                                     style="color: aliceblue;font-weight:bold;">
                                     Search
                                 </a>

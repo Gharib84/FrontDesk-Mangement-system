@@ -106,7 +106,7 @@ class BookController extends Controller
         //
         $request->validate(
             [
-                'room_number' => 'required',
+                'room_number' => 'required|unique:check_ins',
                 'guest_name' => 'required|string|min:10|max:50',
                 'room_type' => 'required',
                 'arrival_date' => 'required',
@@ -114,6 +114,9 @@ class BookController extends Controller
                 'pax' => 'required'
             ]
             );
+
+            // if statement 
+            
 
             $checkIn = new checkIn();
             $checkIn->room_number = $request->get('room_number');
