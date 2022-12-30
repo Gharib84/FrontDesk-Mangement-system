@@ -69,7 +69,7 @@
                                                         </td>
                                                         <td>
                                                             <form action="{{ route('invoices.show', $invoice) }}"
-                                                                method="GET">
+                                                                method="get">
                                                                 @csrf
                                                                 <button type="submit"
                                                                     class="px-6 py-2 border-2 font-bold border-blue-400 text-sm text-blue-400 leading-tight rounded-full focus:outline-none focus:ring-0 transition duration-150 ease-in-out

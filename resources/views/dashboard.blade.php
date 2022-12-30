@@ -94,9 +94,9 @@
                         class="card-three card w-full h-48 flex justify-center items-center shadow-md ml-5 rounded-r">
                         <div class="sub-child grid gap-3">
                             <h1 class="text-3xl">
-                                Departure List
+                                Invoices List
                             </h1>
-                            <a href="{{ route('books.create') }}" class="bg-indigo-800 px-5 py-2 rounded-r mt-2"
+                            <a href="{{ route('invoices.table') }}" class="bg-indigo-800 px-5 py-2 rounded-r mt-2"
                                 style="color: aliceblue;font-weight:bold;">
                                 Check Now
                             </a>

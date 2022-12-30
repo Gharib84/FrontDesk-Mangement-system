@@ -169,7 +169,22 @@ class roomscontroller extends Controller
     public function show_invoice(invoice $invoice){
         //code here 
         $invoices = invoice::with('room')->where('invoice_fk', $invoice->invoice_fk)->get();
+        $invoice = Invoice::find($invoice);
         return view('invoices.show', compact('invoices'));
+       }
+
+       public function PayNow(invoice $invoice)
+       {
+            //code here
+          if ($invoice !== null) {
+            # code...
+            $invoice->delete();
+            $invoices = invoice::with('room')->where('invoice_fk', $invoice->invoice_fk)->get();
+            session()->flash('success', 'Payment has been Done successfully!');
+            return view('invoices.show', compact('invoices'));
+           
+          }
+            
        }
 
     }  
