@@ -36,6 +36,7 @@ Route::put('rooms/{checkIn}', [roomscontroller::class, 'store_invoice'])->name('
 Route::get('invoices',[roomscontroller::class, 'invoices_index'])->name('invoices.table')->middleware(['auth', 'verified']);
 Route::get('invoices/{invoice}', [roomscontroller::class, 'show_invoice'])->name('invoices.show')->middleware(['auth', 'verified']);
 Route::delete('invoices/{invoice}',[roomscontroller::class, 'PayNow'])->name('invoices.PayNow')->middleware(['auth', 'verified']);
-
 Route::get('arrivals', [CheckController::class, 'index'])->name('rooms.arrivals')->middleware(['auth', 'verified']);
+Route::post('arrivals', [CheckController::class, 'ArrivalsList'])->name('arrivals.list')->middleware(['auth', 'verified']);
+Route::delete('arrivals/{arr}', [CheckController::class,'arrivalsDestroy'])->name('arrivals.destroy')->middleware(['auth', 'verified']);
 require __DIR__.'/auth.php';

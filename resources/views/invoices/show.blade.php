@@ -24,7 +24,7 @@
                     <div class="invoice-parent py-5 flex flex-row justify-between">
                         <div class="first-child h-full flex flex-col align-middle">
                             <h1 class="p-5 text-6xl text-red-600 font-bold">
-                                Invoice #{{ $invoice->room->room_number }}
+                                Invoice #{{ $invoiceNumber }}
                             </h1>
                             <h3 class="px-5 py-0 text-black text-lg  mt-0 mb-2 font-bold">
                                 {{ $invoice->room->Guest_Name }}

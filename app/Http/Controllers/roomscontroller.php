@@ -168,9 +168,15 @@ class roomscontroller extends Controller
 
     public function show_invoice(invoice $invoice){
         //code here 
-        $invoices = invoice::with('room')->where('invoice_fk', $invoice->invoice_fk)->get();
-        $invoice = Invoice::find($invoice);
-        return view('invoices.show', compact('invoices'));
+        if ($invoice !== null) {
+            # code...
+            $invoiceNumber = mt_rand(1, 10000) + 2;
+            $invoices = invoice::with('room')->where('invoice_fk', $invoice->invoice_fk)->get();
+            $invoice = Invoice::find($invoice);
+            return view('invoices.show', compact('invoices'))->with('invoiceNumber', $invoiceNumber);
+
+        }
+
        }
 
        public function PayNow(invoice $invoice)
@@ -178,10 +184,11 @@ class roomscontroller extends Controller
             //code here
           if ($invoice !== null) {
             # code...
+            $invoiceNumber = mt_rand(1, 10000) + 2;
             $invoice->delete();
             $invoices = invoice::with('room')->where('invoice_fk', $invoice->invoice_fk)->get();
             session()->flash('success', 'Payment has been Done successfully!');
-            return view('invoices.show', compact('invoices'));
+            return view('invoices.show', compact('invoices'))->with('invoiceNumber', $invoiceNumber);
            
           }
             

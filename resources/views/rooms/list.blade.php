@@ -15,7 +15,7 @@
                             <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
                                 <div class="overflow-hidden">
                                     <h1 class="font-bold text-xl text-left mb-5 ml-1">
-                                        Check In List In Resort
+                                        Arrival List In Resort
                                     </h1>
                                     @if (session('success'))
                                     <div role="alert" x-data="{ show: true }" x-show="show" id="alert-session" class="w-full bg-fuchsia-500 mb-2 py-2">
@@ -46,55 +46,36 @@
                                                     Departure Date
                                                 </th>
                                                 <th scope="col" class="text-sm font-bold text-white px-6 py-4">
-                                                    Pax
-                                                </th>
-
-                                                <th scope="col" class="text-sm font-bold text-white px-6 py-4">
-                                                    Invoices
-                                                </th>
-                                                <th scope="col" class="text-sm font-bold text-white px-6 py-4">
                                                     Action
                                                 </th>
                                             </tr>
                                         </thead class="border-b">
                                         <tbody>
 
-                                            @foreach ($rooms as $room)
+                                            @foreach ($arrivalsList as $arr)
                                                 <tr class="bg-white border-b">
                                                     <td
                                                         class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                        {{ $room->room_number }}
+                                                        {{ $arr->room_number }}
                                                     </td>
                                                     <td
                                                         class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                        {{ $room->Guest_Name }}
+                                                        {{ $arr->Guest_Name }}
                                                     </td>
                                                     <td
                                                         class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                        {{ $room->Room_Type }}
+                                                        {{ $arr->Room_Type }}
                                                     </td>
                                                     <td
                                                         class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                        {{ $room->Arrival_Date }}
+                                                        {{ $arr->Arrival_Date }}
                                                     </td>
                                                     <td
                                                         class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                        {{ $room->Departure_Date }}
+                                                        {{ $arr->Departure_Date }}
                                                     </td>
                                                     <td>
-                                                        {{ $room->pax }}
-                                                    </td>
-                                                    <td>
-                                                        <form action="{{route('rooms.show', $room->checkIn_id)}}" method="GET">
-                                                            @csrf
-                                                            <button type="submit"
-                                                                class="px-6 py-2 border-2 font-bold border-blue-400 text-sm text-blue-400 leading-tight rounded-full focus:outline-none focus:ring-0 transition duration-150 ease-in-out
-                                                                ">
-                                                                Invoice</button>
-                                                        </form>
-                                                    </td>
-                                                    <td>
-                                                        <form action="{{route('rooms.destroy', $room)}}" method="POST">
+                                                        <form action="{{route('arrivals.destroy', $arr->book_id)}}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
@@ -107,7 +88,7 @@
 
                                         </tbody>
                                     </table>
-                                    {{ $rooms->links() }}
+                                    {{ $arrivalsList->links() }}
                                 </div>
                             </div>
                         </div>
