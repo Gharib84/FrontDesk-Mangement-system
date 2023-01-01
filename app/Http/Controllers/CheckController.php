@@ -40,10 +40,14 @@ class CheckController extends Controller
         if($arr !== null){
             $arr->delete();
             session()->flash('success','Check Out has been Done successfully!');
-            return redirect()->route('rooms.arrivals');
+            return redirect()->route('arrivalsList');
         }
     }
 
+    public function arrivalsTable(Request $request){
+        $arrivalsList = DB::table('books')->where('Arrival_Date', $request->route('arr'))->paginate(10);
+        return view('rooms.list')->with('arrivalsList', $arrivalsList);;
+    }
 
     public function SearchForCheckOut(Request $request){
         //code 
