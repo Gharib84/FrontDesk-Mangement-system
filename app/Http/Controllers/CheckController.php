@@ -11,7 +11,7 @@ class CheckController extends Controller
     //
 
 
-    public function index(){
+    public function Create(){
         return view('rooms.arrivals');
     }
 
@@ -22,7 +22,7 @@ class CheckController extends Controller
     }
 
 
-    public function ArrivalsList(Request $request){
+    public function ArrivalsPost(Request $request){
         #code here 
         $request->validate([
             'arrival_date' => 'required|date|after_or_equal:today',
@@ -30,23 +30,27 @@ class CheckController extends Controller
 
         if ($request->get('arrival_date') !== null) {
             # code...
+          Session()->put('search_date', $request->get('arrival_date'));
           $arrivalsList = DB::table('books')->where('Arrival_Date', $request->get('arrival_date'))->paginate(10);
           return view('rooms.list')->with('arrivalsList', $arrivalsList);
 
         }
     }
 
-    public function arrivalsDestroy(book $arr){
+    public function ArrivalDeleteRoom(book $arr){
         if($arr !== null){
             $arr->delete();
-            session()->flash('success','Check Out has been Done successfully!');
-            return redirect()->route('arrivalsList');
+            session()->flash('success','Room has been Deleted successfully!');
+            return redirect()->route('arrivals.index')->withInput();;
         }
     }
 
-    public function arrivalsTable(Request $request){
-        $arrivalsList = DB::table('books')->where('Arrival_Date', $request->route('arr'))->paginate(10);
-        return view('rooms.list')->with('arrivalsList', $arrivalsList);;
+    public function ArrivalsIndex(book $arr, Request $request)
+    {
+        $search_date = session()->get('search_date');
+        $arrivalsList = DB::table('books')->where('Arrival_Date',$search_date )->paginate(10);
+        return view('rooms.list')->with('arrivalsList', $arrivalsList);
+
     }
 
     public function SearchForCheckOut(Request $request){

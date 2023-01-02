@@ -75,12 +75,12 @@
                                                         {{ $arr->Departure_Date }}
                                                     </td>
                                                     <td>
-                                                        <form action="{{route('arrivals.destroy', $arr->book_id)}}" method="POST">
+                                                        <form action="{{route('arrival.delete', $arr->book_id)}}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
                                                                 class="inline-block px-6 py-2 border-2 border-red-600 text-red-600 font-bold text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
-                                                                Check Out</button>
+                                                                Delete</button>
                                                         </form>
                                                     </td>
                                                 </tr class="bg-white border-b">
