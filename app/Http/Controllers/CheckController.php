@@ -41,7 +41,7 @@ class CheckController extends Controller
         if($arr !== null){
             $arr->delete();
             session()->flash('success','Room has been Deleted successfully!');
-            return redirect()->route('arrivals.index')->withInput();;
+            return redirect()->route('arrivals.index')->withInput();
         }
     }
 
@@ -53,8 +53,46 @@ class CheckController extends Controller
 
     }
 
-    public function SearchForCheckOut(Request $request){
-        //code 
+
+
+    public function DepartureForm(){
+        return view('rooms.departureForm');
 
     }
+
+    public function DeparturePost(Request $request)
+    {
+        $request->validate([
+            'departure_date' => 'required|date|after_or_equal:today',
+        ]);
+
+        if ($request->get('departure_date') !== null) {
+            Session()->put('departure_date', $request->get('departure_date'));
+            $departureList = DB::table('check_ins')->where('Departure_Date', $request->get('departure_date'))->paginate(10);
+            return view('rooms.departureList')->with('departureList', $departureList);
+        }
+    }
+
+    public function DeleteRoomPerDate(checkIn $dep)
+    {
+        if ($dep !== null) {
+            
+            $dep->delete();
+            session()->flash('success','Check Out has been Done successfully!');
+            return redirect()->route('departure.list')->withInput();
+
+            
+
+        }
+    }
+
+    public function DepartureListAfterCheckOut(Request $request, checkIn $dep)
+        {
+            $departure_Date = session()->get('departure_date');
+                if (! is_null($departure_Date)) {
+                        $departureList = DB::table('check_ins')->where('Departure_Date', $departure_Date)->paginate(10);
+                        return view('rooms.departureList')->with('departureList', $departureList);
+                }
+            
+        }
 }

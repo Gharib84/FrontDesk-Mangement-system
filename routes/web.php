@@ -42,4 +42,10 @@ Route::get('arrivals/form',[CheckController::class, 'Create'])->name('arrivals.c
 Route::post('arrivals/form', [CheckController::class, 'ArrivalsPost'])->name('arrivals.post')->middleware(['auth', 'verified']);
 Route::delete('arrivals/form/{arr}', [CheckController::class, 'ArrivalDeleteRoom'])->name('arrival.delete')->middleware(['auth', 'verified']);
 Route::get('arrivals', [CheckController::class, 'ArrivalsIndex'])->name('arrivals.index')->middleware(['auth', 'verified']);
+
+#Departure
+Route::get('departure', [CheckController::class, 'DepartureForm'])->name('departure.form')->middleware(['auth', 'verified']);
+Route::post('departure', [CheckController::class, 'DeparturePost'])->name('departure.post')->middleware(['auth', 'verified']);
+Route::delete('departure/{dep}',[CheckController::class, 'DeleteRoomPerDate'])->name('departure.delete')->middleware(['auth', 'verified']);
+Route::get('departure/list', [CheckController::class,'DepartureListAfterCheckOut'])->name('departure.list')->middleware(['auth', 'verified']);
 require __DIR__.'/auth.php';

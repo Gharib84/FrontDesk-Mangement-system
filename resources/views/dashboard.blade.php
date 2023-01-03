@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight xsm:text-center">
             {{ __('F.D.System') }}
         </h2>
     </x-slot>
@@ -12,7 +12,7 @@
 
                     {{-- cards --}}
                     <div
-                        class="cards mt-7 w-full h-2/4  sm:flex sm:flex-col md:flex md:flex-col lg:flex lg:flex-row  xl:flex xl:flex-row 2xl:flex 2xl:flex-row justify-between
+                        class="cards mt-7 w-full h-2/4  sm:flex sm:flex-col md:flex md:flex-col lg:flex lg:flex-row  xl:flex xl:flex-row 2xl:flex 2xl:flex-row xsm:flex-col justify-between
                             sm:items-center md:items-center 
                         ">
                         <div class="card-one card w-full h-48 flex justify-center items-center shadow-md ml-5 rounded-r">
@@ -47,7 +47,7 @@
                                 <h1 class="text-3xl">
                                     Departure List
                                 </h1>
-                                <a href="{{ route('books.create') }}" class="bg-indigo-800 px-5 py-2 rounded-r mt-2"
+                                <a href="{{ route('departure.form') }}" class="bg-indigo-800 px-5 py-2 rounded-r mt-2"
                                     style="color: aliceblue;font-weight:bold;">
                                     Check Now
                                 </a>
@@ -61,7 +61,7 @@
 
                 {{-- cards --}}
                 <div
-                    class="cards mt-7 w-full h-2/4  sm:flex sm:flex-col md:flex md:flex-col lg:flex lg:flex-row  xl:flex xl:flex-row 2xl:flex 2xl:flex-row justify-between
+                    class="cards mt-7 w-full h-2/4  sm:flex sm:flex-col md:flex md:flex-col lg:flex lg:flex-row  xl:flex xl:flex-row 2xl:flex 2xl:flex-row xsm:flex-col justify-between
                         sm:items-center md:items-center 
                     ">
                     <div class="card-one card w-full h-48 flex justify-center items-center shadow-md ml-5 rounded-r">

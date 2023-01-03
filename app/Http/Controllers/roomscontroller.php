@@ -55,8 +55,8 @@ class roomscontroller extends Controller
                 'room_number' => 'required|unique:books,room_number',
                 'guest_name' => 'required|string|min:10|max:50',
                 'room_type' => 'required',
-                'arrival_date' => 'required',
-                'daparture_date' => 'required',
+                'arrival_date' => 'required|date|after_or_equal:today',
+                'daparture_date' => 'required|date|after_or_equal:today',
                 'pax'=> 'required'
             ]
             );

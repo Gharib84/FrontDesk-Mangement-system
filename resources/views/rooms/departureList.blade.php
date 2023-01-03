@@ -16,12 +16,12 @@
                                 <div class="overflow-hidden">
                                     <div class="main flex flex-row justify-between">
                                         <h1 class="font-bold text-xl text-left mb-5 ml-1">
-                                            Arrivals List In Resort
+                                            Departure List In Resort
                                         </h1>
                                         <a
                                         class="background-transparent  text-blue-700 text-base mt-1 font-bold uppercase outline-none focus:outline-none  mb-0  ease-linear transition-all duration-150"
-                                        href="{{route('arrivals.create')}}">
-                                        Add New Arriaval Date
+                                        href="">
+                                        Add New CheckOut Date
                                     </a>
                                        </div>
                                     @if (session('success'))
@@ -59,40 +59,40 @@
                                             </tr>
                                         </thead class="border-b">
                                         <tbody>
-                                            @if (count($arrivalsList) == 0)
+                                            @if (count($departureList) == 0)
                                             <div role="alert" x-data="{ show: true }" x-show="show" id="alert-session"
                                             class="w-full bg-fuchsia-500 mb-2 py-2">
                                             <span class="  mt-3  text-white text-center font-bold">
-                                                No Arrival Rooms In This Day
+                                                No Departure Rooms In This Day
                                             </span>
                                         </div>
                                         @endif
 
-                                            @foreach ($arrivalsList as $arr)
+                                            @foreach ($departureList as $dep)
                                             
                                                     <tr class="bg-white border-b">
                                                         <td
                                                             class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                            {{ $arr->room_number }}
+                                                            {{ $dep->room_number }}
                                                         </td>
                                                         <td
                                                             class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            {{ $arr->Guest_Name }}
+                                                            {{ $dep->Guest_Name }}
                                                         </td>
                                                         <td
                                                             class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            {{ $arr->Room_Type }}
+                                                            {{ $dep->Room_Type }}
                                                         </td>
                                                         <td
                                                             class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            {{ $arr->Arrival_Date }}
+                                                            {{ $dep->Arrival_Date }}
                                                         </td>
                                                         <td
                                                             class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            {{ $arr->Departure_Date }}
+                                                            {{ $dep->Departure_Date }}
                                                         </td>
                                                         <td>
-                                                            <form action="{{ route('arrival.delete', $arr->book_id) }}"
+                                                            <form action="{{route('departure.delete', $dep->checkIn_id)}}"
                                                                 method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
@@ -106,7 +106,7 @@
 
                                         </tbody>
                                     </table>
-                                    {{ $arrivalsList->links() }}
+                                    {{ $departureList->links() }}
                                 </div>
                             </div>
                         </div>
