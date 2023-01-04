@@ -9,30 +9,22 @@ module.exports = {
     ],
 
     theme: {
+        screens: {
+            'xs': { 'max': '640px' },
+            'sm': { 'min': '641px', 'max': '768px' },
+            'md': { 'min': '769px', 'max': '1024px' },
+            'lg': { 'min': '1025px', 'max': '1280px' },
+            'xl': { 'min': '1281px', 'max': '1536px' },
+            '2xl': { 'min': '1537px' },
+          },
+          
         extend: {
+
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
-            screens: {
-                '2xl': { 'max': '1535px' },
-                // => @media (max-width: 1535px) { ... }
 
-                'xl': { 'max': '1279px' },
-                // => @media (max-width: 1279px) { ... }
 
-                'lg': { 'max': '1023px' },
-                // => @media (max-width: 1023px) { ... }
-
-                'md': { 'max': '767px' },
-                // => @media (max-width: 767px) { ... }
-
-                'sm': { 'max': '639px' },
-                // => @media (max-width: 639px) { ... }
-
-                'xsm':  {'max': '543px'},
-                // => @media (max-width: 543px) { ... }
-
-            }
         },
     },
 
