@@ -1,19 +1,21 @@
 {
-    "functions": {
-        "api/*.php": {
-            "runtime": "vercel-php@0.5.2"
-        }
-    },
+    "version": 2,
     "builds": [
         {
-            "src": "build/**/*",
-            "use": "@vercel/next"
+            "src": "src/index.html",
+            "use": "@vercel/static-build",
+            "config": {
+                "outDir": "public"
+            }
         }
     ],
     "routes": [
         {
-            "src": "build/static/(.*)",
-            "dest": "/static/$1"
+            "src": "/(.*)",
+            "dest": "/index.html"
         }
-    ]
+    ],
+    "env": {
+        "VITE_BUILD_CMD": "vite build"
+    }
 }
