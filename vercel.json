@@ -1,13 +1,10 @@
 {
     "version": 2,
-    "functions": {
-      "api/index.php": { "runtime": "vercel-php@0.3.1" }
-    },
+    "builds": [
+      { "src": "public/index.php", "use": "@vercel/php" }
+    ],
     "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/api/index.php"
-      }
+      { "src": "/(.*)", "dest": "/public/index.php" }
     ],
     "env": {
       "APP_NAME": "Laravel Vercel",
@@ -27,13 +24,6 @@
       "VIEW_COMPILED_PATH": "/tmp/views",
       "SSR_TEMP_PATH": "/tmp/ssr",
       "NODE_PATH": "node"
-    },
-    "builds": [
-      {
-        "src": "public/**/*",
-        "use": "@vercel/static-build"
-      }
-    ],
-    "outputDirectory": "public"
+    }
   }
   
