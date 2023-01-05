@@ -14,9 +14,16 @@
                         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                             <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
                                 <div class="overflow-hidden">
-                                    <h1 class="font-bold text-xl text-left mb-5 ml-1">
-                                        Invoices List In Resort
-                                    </h1>
+                                    <div class="main flex flex-row justify-between">
+                                        <h1 class="font-bold text-xl text-left mb-5 ml-1">
+                                            Invoices List In Resort
+                                        </h1>
+                                        <a
+                                        class="background-transparent  text-blue-700 text-base mt-1 font-bold uppercase outline-none focus:outline-none  mb-0  ease-linear transition-all duration-150"
+                                        href="{{route('rooms.index')}}">
+                                        Add New Invoice
+                                    </a>
+                                       </div>
                                     @if (session('success'))
                                         <div role="alert"  x-data="{ show: true }" x-show="show" id="alert-session" class="w-full bg-fuchsia-500 mb-2 py-2">
                                             <span class="  mt-3  text-white text-center font-bold">

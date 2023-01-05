@@ -32,7 +32,10 @@ Route::resource('rooms', roomscontroller::class)->only([
     'index', 'create', 'store', 'show', 'destroy'
 ])->middleware(['auth', 'verified']);
 
+#rooms
 Route::put('rooms/{checkIn}', [roomscontroller::class, 'store_invoice'])->name('rooms.store_invoice')->middleware(['auth', 'verified']);
+
+#invoices
 Route::get('invoices',[roomscontroller::class, 'invoices_index'])->name('invoices.table')->middleware(['auth', 'verified']);
 Route::get('invoices/{invoice}', [roomscontroller::class, 'show_invoice'])->name('invoices.show')->middleware(['auth', 'verified']);
 Route::delete('invoices/{invoice}',[roomscontroller::class, 'PayNow'])->name('invoices.PayNow')->middleware(['auth', 'verified']);
